@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+
+    <link rel="stylesheet" href="bootstrap.css">
+
+
+
+    <title>Uvindu Bro YouTube Statistics</title>
+
+</head>
+
+<body>
+<br>
+    <img width="100" src="https://telegra.ph/file/62c432d33ca058a5caab5.jpg" class="mx-auto d-block"> <br>
+
+    <div class="container" style="max-width:400px;">
+
+    <div class="jumbotron">
+
+        <h4 class="title" align="center">YouTube Statistics </h4>
+
+        <br> <br> <br> 
+
+        
+     <h4 class="card-title" align="center">Subscribers</h4>
+     <div id="subCount" align="center"></div> 
+    
+    <br> <br>
+
+    <h4 class="card-title" align="center">Views</h4> 
+     <div id="viewCount" align="center"></div> 
+
+     <br> <br>
+
+     <h4 class="card-title" align="center">Videos</h4> 
+     <div id="videoCount" align="center"></div> 
+
+     </div></div>
+
+    <script>
+
+    // Get Subscribers
+    const youtubeKey = 'AIzaSyDbKtwlG07dyLKXAxWWFyIoFCiuSBFw1Ms';
+    const youtubeUser = 'UCBNsVUq2MLyxDSe62ljjWdQ';
+    const subCount = document.getElementById('subCount');
+    const viewCount = document.getElementById('viewCount');
+    const videoCount = document.getElementById('videoCount');
+    
+
+
+    let getSubscribers = () => {
+
+        fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${youtubeUser}&key=${youtubeKey}`)
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            console.log(data);
+            subCount.innerHTML = data["items"][0].statistics.subscriberCount;
+            
+        })
+
+    }
+
+    getSubscribers(); 
+
+
+    let getViwes = () => {
+
+        fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${youtubeUser}&key=${youtubeKey}`)
+        .then(response => {
+            return response.json()
+        })
+        .then(data => {
+            console.log(data);
+            viewCount.innerHTML = data["items"][0].statistics.viewCount;
+    
+        })
+ 
+    }
+
+     getViwes();
+
+
+let getVideos = () => {
+
+fetch(`https://www.googleapis.com/youtube/v3/channels?part=statistics&id=${youtubeUser}&key=${youtubeKey}`)
+.then(response => {
+    return response.json()
+})
+.then(data => {
+    console.log(data);
+    videoCount.innerHTML = data["items"][0].statistics.videoCount;
+    
+})
+ 
+}
+
+getVideos();
+
+
+
+
+    </script>
+
+<h6 class="card-subtitle mb-2 text-muted" align=center>© 2021 Uvindu Bro. &nbsp; All Rights Reserved</h6> <br>
+
+    <script language=JavaScript>
+
+	
+	//Disable right mouse click Script
+	//By Geek Site.in
+	
+	
+	var message="❗ If You Try to do that Your Device will be Hacked!";
+	
+	///////////////////////////////////
+	function clickIE4(){
+	if (event.button==2){
+	alert(message);
+	return false;
+	}
+	}
+	
+	function clickNS4(e){
+	if (document.layers||document.getElementById&&!document.all){
+	if (e.which==2||e.which==3){
+	alert(message);
+	return false;
+	}
+	}
+	}
+	
+	if (document.layers){
+	document.captureEvents(Event.MOUSEDOWN);
+	document.onmousedown=clickNS4;
+	}
+	else if (document.all&&!document.getElementById){
+	document.onmousedown=clickIE4;
+	}
+	
+	document.oncontextmenu=new Function("alert(message);return false")
+	
+	// --> 
+	</script>
+
+</body>
+
+
+</html>
